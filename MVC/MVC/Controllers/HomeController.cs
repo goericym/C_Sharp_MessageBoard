@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using MVC.Models;
+using System.Data.Entity;
 
 namespace MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public  ActionResult Index()
         {
+
             return View();
         }
 
@@ -26,5 +29,12 @@ namespace MVC.Controllers
 
             return View();
         }
+        public ActionResult Message()
+        {
+                        MessageBoardEntities1 db = new MessageBoardEntities1();
+            var a = db.message.Where(d =>d.ID>0);
+        return View(a.ToList() );
+        }
+
     }
 }
