@@ -10,6 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="../scripts/myScript.js"></script>
 </head>
 <body>
     <p>
@@ -28,7 +29,7 @@
             </th>
             <th></th>
         </tr>
-    
+
     @foreach (var item in Model) {
         <tr>
             <td>
@@ -43,11 +44,12 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
+                <a href="javascript:void(0)" onclick="testid(@Html.DisplayFor(id => item.ID))">修改</a>
             </td>
         </tr>
     }
-    
+
     </table>
 </body>
 </html>

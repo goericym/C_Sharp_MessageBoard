@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
 
+
 namespace MVC.Controllers
 {
     public class messagesController : Controller
@@ -18,6 +19,12 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             return View(db.message.ToList());
+        }
+        public ActionResult JSON()
+        {
+             
+
+            return Json(db.message, JsonRequestBehavior.AllowGet);
         }
 
         // GET: messages/Details/5
@@ -50,6 +57,7 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                message.UpdateTime = DateTime.Now;
                 db.message.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
