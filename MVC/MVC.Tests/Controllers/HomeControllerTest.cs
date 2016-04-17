@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MVC;
 using MVC.Controllers;
-
+using MVC.Models;
+using System.Data.Entity;
 namespace MVC.Tests.Controllers
 {
     [TestClass]
@@ -50,5 +51,17 @@ namespace MVC.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        //[TestMethod]
+        //public void Message()
+        //{
+        //    // Arrange
+        //    HomeController controller = new HomeController();
+
+        //    // Act
+        //    ViewResult result = controller.Message() as ViewResult;
+
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //}
     }
 }
