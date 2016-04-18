@@ -1,55 +1,69 @@
-﻿@model IEnumerable<MVC.Models.message>
+﻿@model MVC.Models.Data
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <script src="../scripts/myScript.js"></script>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Message1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Account)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdateTime)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Account)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdateTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })|
-                <a href="javascript:void(0)" onclick="testid(@Html.DisplayFor(id => item.ID))">修改</a>
-            </td>
-        </tr>
+    @{
+        Layout = null;
+        
     }
 
-    </table>
-</body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>CSharp練習main</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="../Scripts/jquery-2.2.2.min.js"></script>
+        <script src="../Scripts/myScript.js"></script>
+    </head>
+    <body onload="AutoLoad()">
+        <div class="center">
+
+            <table>
+                <caption>CSharp練習_留言版  @Model.Account</caption>
+                <tr>
+                    <td>
+                        <div align="right">
+
+                            @if (Model.Account == "")
+                            {
+                                
+                                @Html.ActionLink("登入", "messages/Login")
+
+                            }
+                            else
+                            {
+                       
+                                @Html.ActionLink("登出", "messages/Login")
+                            }
+
+
+                        </div>
+                        <div id="loadingIMG" style="display:none;text-align:center"><img src="../image/loading.gif" height='44' /></div>
+                        <div class="main">
+                        </div>
+                        <div class="NewMsg">
+                        </div>
+                     
+                       @if (Model.Account != "")
+                        {
+                        <hr color="green">
+                        <b> 新留言 </b> <font class="FontColorClass01">  </font>
+                        <br><br>
+                        <input type = "text" name="NewMsg" id="NewMessage">
+                        <p id = "tip01" style="display:none">請輸入留言!</p>
+                        <p align = "right" > <input class="button" type="button" value="發佈" onclick="Check_Main()"> <input type = "reset" value="取消"></p> 
+                        }
+                       
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        @*@foreach (var item in Model.message)
+        {
+           
+                    @Html.DisplayFor(modelItem => item.Message1)
+               
+        }*@
+    </body>
 </html>

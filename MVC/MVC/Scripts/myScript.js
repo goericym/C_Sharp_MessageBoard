@@ -241,10 +241,14 @@ function DoDelete(id) {
     });
 }
 var AutoLoad=function(){
-	var URLs="index.php";
+
 	$.ajax({
-		url: URLs,
-		data: { action : 'GetAllMsg'},
+	    url: "/messages/GetAll",
+	    data: {
+
+	        action: ''
+
+	    },
 		type:"POST",
 		dataType:'text',
 		success: function(html){

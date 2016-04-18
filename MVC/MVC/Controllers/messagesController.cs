@@ -16,14 +16,16 @@ namespace MVC.Controllers
         private MessageBoardEntities1 db = new MessageBoardEntities1();
 
         // GET: messages
+
         public ActionResult Index()
         {
-            return View(db.message.ToList());
+            Data GetData = new Data();
+            GetData.Account = "1234";
+            GetData.message = db.message.ToList();
+            return View(GetData);
         }
         public ActionResult JSON()
         {
-             
-
             return Json(db.message, JsonRequestBehavior.AllowGet);
         }
 
@@ -130,6 +132,14 @@ namespace MVC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult GetAll()
+        {
+            Data GetData = new Data();
+            GetData.Account = "1234";
+            GetData.message = db.message.ToList();
+            GetData.remessage = db.ReMessage.ToList();
+            return View(GetData);
         }
     }
 }

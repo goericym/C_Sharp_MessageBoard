@@ -1,0 +1,45 @@
+﻿@*@model IEnumerable<MVC.Models.message>*@
+@model MVC.Models.Data
+@{
+    Layout = null;
+}
+ 
+    @foreach (var item in Model.message)
+    {
+        var sMainID = String.Format("main{0}", item.ID);
+        var sMsgID = String.Format("Msg{0}", item.ID);
+        var sID= String.Format("{0}", item.ID);
+        @:<div class="@sMainID">
+        @:留言 @Html.DisplayFor(modelItem => item.ID) / @Html.DisplayFor(modelItem => item.Account) / <font size="1">@Html.DisplayFor(modelItem => item.UpdateTime)</font>
+        <br><br>
+        <input type="text" id="@sMsgID" name="@sMsgID" value=@Html.DisplayFor(modelItem => item.Message1)>
+        <br>
+        <p align="right">
+            @if (Model.Account != "")
+                {
+                <span style="float:left"><a href="javascript:void(0)" onclick="DoReMsg(@Html.DisplayFor(modelItem => item.ID));">回覆</a></span>
+            }
+            @if (item.Account == Model.Account)
+                {
+                <span style="float:right"><a href="javascript:void(0)" onclick="DoModify(@Html.DisplayFor(modelItem => item.ID))">修改</a> / <a href="javascript:void(0)" onclick="DoDelete(@Html.DisplayFor(modelItem => item.ID))">刪除</a></span>
+            }
+        </p><br>
+    }
+            @*@Html.DisplayFor(modelItem => item.Message1)
+
+                @Html.DisplayFor(modelItem => item.Account)
+
+                @Html.DisplayFor(modelItem => item.UpdateTime)
+
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID })*@
+
+
+         
+
+
+
+
+
+
+
+        </div>
