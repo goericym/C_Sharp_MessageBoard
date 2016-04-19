@@ -9,8 +9,8 @@
         var sMainID = String.Format("main{0}", item.ID);
         var sMsgID = String.Format("Msg{0}", item.ID);
         var sID= String.Format("{0}", item.ID);
-        @:<div class="@sMainID">
-        @:留言 @Html.DisplayFor(modelItem => item.ID) / @Html.DisplayFor(modelItem => item.Account) / <font size="1">@Html.DisplayFor(modelItem => item.UpdateTime)</font>
+        <div class="@sMainID">
+        留言 @Html.DisplayFor(modelItem => item.ID) / @Html.DisplayFor(modelItem => item.Account) / <font size="1">@Html.DisplayFor(modelItem => item.UpdateTime)</font>
         <br><br>
         <input type="text" id="@sMsgID" name="@sMsgID" value=@Html.DisplayFor(modelItem => item.Message1)>
         <br>
@@ -24,7 +24,18 @@
                 <span style="float:right"><a href="javascript:void(0)" onclick="DoModify(@Html.DisplayFor(modelItem => item.ID))">修改</a> / <a href="javascript:void(0)" onclick="DoDelete(@Html.DisplayFor(modelItem => item.ID))">刪除</a></span>
             }
         </p><br>
-    }
+            @foreach (var item1 in Model.remessage)
+            {
+                if (item.ID == item1.Re_Id)
+                {
+                    <div>
+                        <blockquote>‧ @item1.Message</blockquote>
+
+                    </div>
+                }
+            }
+    </div>
+}
             @*@Html.DisplayFor(modelItem => item.Message1)
 
                 @Html.DisplayFor(modelItem => item.Account)
@@ -34,12 +45,5 @@
                 @Html.ActionLink("Edit", "Edit", new { id=item.ID })*@
 
 
-         
 
-
-
-
-
-
-
-        </div>
+      

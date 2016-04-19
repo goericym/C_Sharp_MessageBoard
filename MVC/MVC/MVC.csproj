@@ -202,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\messagesController.cs" />
+    <Compile Include="Controllers\ReMessagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +245,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -262,7 +264,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ClassDiagram1.cd" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -328,6 +329,12 @@
     <Content Include="Views\messages\Edit.cshtml" />
     <Content Include="Views\messages\Index.cshtml" />
     <Content Include="Views\messages\GetAll.cshtml" />
+    <Content Include="Views\ReMessages\Create.cshtml" />
+    <Content Include="Views\ReMessages\Delete.cshtml" />
+    <Content Include="Views\ReMessages\Details.cshtml" />
+    <Content Include="Views\ReMessages\Edit.cshtml" />
+    <Content Include="Views\ReMessages\Index.cshtml" />
+    <Content Include="Views\messages\CreateReMsg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,7 +28,8 @@ function Check_Main(){
 
 function DoReMsg(id) {
     //var html="<b>留言</b>";
-    var Mainid="main"+id;
+    var Mainid = "main" + id;
+    //console.log(Mainid);
     var Addid="add"+id;
     $('.'+Addid).hide();
     $('.'+Addid).remove();
@@ -60,12 +61,15 @@ function Check_ReMsg(id){
     }
     //console.log(id);
     //post
+    var token = $('input[name="__RequestVerificationToken"]').val();
     $.ajax({
         type: 'POST',
-        url: 'index.php',
-        data: { ReMsg : document.getElementById("ReMessage").value,
+        url: '/messages/CreateReMsg',
+        data: {
+            Message: document.getElementById("ReMessage").value,
             action : 'ReMsg',
-            Re_Id:id
+            Re_Id: id,
+            __RequestVerificationToken: token
         },
         dataType: 'text',
         success: function(response) {

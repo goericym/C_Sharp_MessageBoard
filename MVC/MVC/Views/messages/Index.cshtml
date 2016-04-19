@@ -11,11 +11,12 @@
     <head>
         <title>CSharp練習main</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="../Content/styles.css">
         <script src="../Scripts/jquery-2.2.2.min.js"></script>
         <script src="../Scripts/myScript.js"></script>
     </head>
     <body onload="AutoLoad()">
+        @Html.AntiForgeryToken()
         <div class="center">
 
             <table>
@@ -33,7 +34,7 @@
                             else
                             {
                        
-                                @Html.ActionLink("登出", "messages/Login")
+                                @Html.ActionLink("登出", "messages/Logout")
                             }
 
 

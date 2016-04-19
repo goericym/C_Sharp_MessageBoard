@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using MVC.Models;
-
+using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
@@ -140,6 +137,23 @@ namespace MVC.Controllers
             GetData.message = db.message.ToList();
             GetData.remessage = db.ReMessage.ToList();
             return View(GetData);
+        }
+        [HttpPost, ActionName("CreateReMsg")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateReMsg([Bind(Include = "ID,Re_Id,Account,Message,UpdateTime")] ReMessage reMessage)
+        {
+            if (ModelState.IsValid)
+            {
+                reMessage.UpdateTime = DateTime.Now;
+                reMessage.Account = "asdf";
+                db.ReMessage.Add(reMessage);
+                await db.SaveChangesAsync();
+                //return RedirectToAction("Index");
+                return View(reMessage);
+            }
+
+            //return View(reMessage);
+            return Content("");
         }
     }
 }
